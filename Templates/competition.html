@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+
+ <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>Upcoming Competitions </h2>
+            <p>Join the competition and enjoy to play with abacus</p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+ <!-- ======= Upcoming Competitions ======= -->
+
+{% if data %}
+<div class="container_table">
+  			<div class="row">
+    			<div class="col-12">
+      				<table class="table   border-primary table-lg table-hover">
+        				<thead>
+          					<tr class="table-active">
+            					<th scope="col">Competition Name</th>
+            					<th scope="col">Description</th>
+            					<th scope="col">Date</th>
+            					<th scope="col">Actions</th>
+          					</tr>
+        				</thead>
+						{% for i in data %}
+
+        				<tbody>
+          					<tr>
+            					<th scope="row">{{i.C_name}}</th>
+            					<td>{{i.description}}</td>
+            					<td>{{i.date}}</td>
+            					<td>
+               					<button type="button" class="btn btn-success"><a style="color:white" href="{{i.Url}}" target="_blank">Register</a></button>
+            					</td>
+          					</tr>
+        				</tbody>
+						{% endfor %}
+      				</table>
+    			</div>
+  			</div>
+		</div>
+{% endif %}
+<!-- ======= End======= -->
+
+
+
+
+<!-- ======= Footer ======= -->
+{% endblock %}

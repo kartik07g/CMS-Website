@@ -1,0 +1,261 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!-- ======= Admin Login ======= -->
+<style>
+
+  .container_table {
+  padding: 2rem 0rem;
+}
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}
+</style>
+
+<section class="h-100 h-custom" style="background-color: #F5F5F5; margin-top: 15px;">
+ <div style="text-align: center; margin-top: 10px;">
+    <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" style=" padding: 10px 20px 0px 10px; margin-bottom:5px;" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample1" style=" padding: 10px 20px 0px 10px; margin-bottom:5px;" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" style=" padding: 10px 20px 0px 10px; margin-bottom:5px;" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+
+</p>
+ </div>
+<!--<div class="collapse" id="collapseExample">-->
+<!--  <div class="card card-body">-->
+<!--    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.-->
+<!--  </div>-->
+<!--</div>-->
+  <div id="collapseExample" class="collapse container_table py-8 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="{{url_for('static',filename='img/Learning.jpg' )}}" class="w-10"  style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Competition Info</h3>
+
+            <form class="px-md-2" action="/competition" method="post">
+
+              <div class="form-outline mb-4">
+                 <label class="form-label"  for="form3Example1q">Competition Name</label>
+                  <input type="text" name="C_name" id="form3Example1q" class="form-control" required />
+
+              </div>
+
+               <div class="form-outline mb-4">
+                 <label class="form-label"  for="form3Example1q">Url</label>
+                  <input type="text" name="Url" id="form4Example1q" class="form-control" required/>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Select a date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="exampleDatepicker1"
+                      name="date"
+                      required
+                    />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                </div>
+              </div>
+
+
+              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                <div class="col-md-12">
+
+                  <div class="form-outline">
+                     <label class="form-label" for="form3Example6w">Description</label>
+                     <textarea class="form-control" name="description" rows="5"  placeholder="Description about competition"></textarea>
+                  </div>
+
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div id="collapseExample1" class="collapse container_table py-8 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+<!--          <img src="{{url_for('static',filename='img/Count.jpg' )}}" class="w-10"  style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">-->
+                      <ul class="list-group" >
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Students
+                            <span class="badge badge-primary badge-pill">{{count[0].Students}}</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Courses
+                            <span class="badge badge-primary badge-pill">{{count[0].Courses}}</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Events
+                            <span class="badge badge-primary badge-pill">{{count[0].Events}}</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Trainers
+                            <span class="badge badge-primary badge-pill">{{count[0].Trainers}}</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Franchise
+                            <span class="badge badge-primary badge-pill">{{count[0].Franchise}}</span>
+                          </li>
+                        </ul>
+            <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Academic Counts</h3>
+
+            <form class="px-md-2" action="/count" method="post">
+
+
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Students</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleDatepicker1"
+                      name="Stud_num"
+                      required
+                    />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Courses</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleDatepicker1"
+                      name="Courses_num"
+                        required
+                    />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Events</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleDatepicker1"
+                      name="Events_num"
+                        required
+                    />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Trainers</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleDatepicker1"
+                      name="Trainers_num"
+                        required
+                    />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Franchise</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleDatepicker1"
+                      name="Franchise_num"
+                    required
+                    />
+                  </div>
+
+                </div>
+
+              <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-------------------Admin Login End -------------->
+
+<!-------------------Competition Data Start -------------->
+
+ {% if data %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-lg table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Competition Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        {% for i in data %}
+        <tbody>
+          <tr>
+            <th scope="row">{{i.C_name}}</th>
+            <td>{{i.description}}</td>
+            <td>{{i.date}}</td>
+
+            <td>
+            <button type="submit" class="btn btn-danger"><a style="color:white" href="/delete/{{i.Url}}">Delete</a> </button>
+            </td>
+          </tr>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-------------------Competition Data End-------------->
+
+
+<!-- ======= Footer ======= -->
+{% endblock %}
