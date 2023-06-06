@@ -5,6 +5,9 @@ from datetime import datetime
 import json
 from flask_mail import Mail
 from flask import flash
+from flask import Flask, render_template, request, url_for
+from werkzeug.utils import redirect
+from crud import CRUDOperations
 
 
 local_server = True
@@ -279,6 +282,44 @@ def delete(id):
     if (Competition.query.filter(Competition.C_name==id).delete()):
         db.session.commit()
         return redirect('/competition')
+@app.route('/view_entries')
+def view_entries():
+    items = crud_operations.get_all_items()
+    return render_template('view_entries.html', items=items)
+
+
+@app.route('/delete_entry/<id>', methods=['POST'])
+def delete_entry(id):
+    crud_operations.delete_item(id)
+    return redirect(url_for('view_entries'))
+
+
+@app.route('/update_entry/<id>', methods=['GET', 'POST'])
+def update_entry(id):
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
+        item = {
+            'id': id,
+            'title': title,
+            'desc': desc
+        }
+        crud_operations.update_item(item)
+        return redirect(url_for('view_entries'))
+
+    # Retrieve the existing item
+    items = crud_operations.get_all_items()
+    item = next((item for item in items if item['id'] == id), None)
+    if item is None:
+        return "Item not found"
+
+    return render_template('update_entry.html', item=item)
+
+
+@app.route('/update_entry', methods=['POST'])
+def update_entry_redirect():
+    id = request.form['id']
+    return redirect(url_for('update_entry', id=id))
 
 
 
