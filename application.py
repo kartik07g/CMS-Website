@@ -5,10 +5,13 @@ from datetime import datetime
 import json
 from flask_mail import Mail
 from flask import flash
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for,session
 from werkzeug.utils import redirect
 from crud import CRUDOperations
+from flask_session import Session
+from flask_bcrypt import Bcrypt
 
+import support
 
 local_server = True
 application= Flask(__name__, template_folder="Templates")
@@ -21,6 +24,15 @@ application.config.update(
     MAIL_PASSWORD='vit@19732020'
 )
 mail = Mail(application)
+
+
+application.config["SESSION_PERMANENT"] = False
+application.config["SESSION_TYPE"] = "filesystem"
+application.secret_key="loginsession"
+Session(application)
+
+
+
 # if (local_server):
 #     application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Localhost/contact_info'
 # else:
@@ -68,6 +80,47 @@ mail = Mail(application)
 #     Events = db.Column(db.Integer, nullable=False)
 #     Trainers = db.Column(db.Integer, nullable=False)
 #     Franchise = db.Column(db.Integer, nullable=False)
+
+
+
+
+@application.route('/admin')
+def admin():
+    if not session.get('Name'):
+        return redirect('/')
+    else:
+        return render_template('/Admin/show.html',name=session['Name'])
+
+
+@application.route('/login')
+def form():
+    return render_template('/Admin/disk.html')
+
+@application.route('/logout')
+def logout():
+    session.pop('Name',None)
+    return redirect('/')
+
+@application.route('/error')
+def display():
+    return '<h1>incorrect credintials</h1>'
+
+@application.route('/data', methods = ['POST', 'GET'])
+def login():
+    # hashed_password = bcrypt.generate_password_hash('admin123')
+
+    if request.method == 'GET':
+        return "Login via the login Form"
+
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        session['Name']=username
+
+        if(support.func(username,password)):
+            return redirect('/admin')
+        else:
+            return redirect("/error")
 
 
 @application.route("/")
