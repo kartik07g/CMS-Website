@@ -1,5 +1,5 @@
 from flask import Flask, render_template , redirect
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from datetime import datetime
 import json
@@ -31,6 +31,7 @@ application.config["SESSION_TYPE"] = "filesystem"
 application.secret_key="loginsession"
 Session(application)
 
+<<<<<<< HEAD
 
 
 # if (local_server):
@@ -84,6 +85,10 @@ Session(application)
 
 @application.route('/section')
 def section():
+=======
+@application.route('/admin')
+def admin():
+>>>>>>> 4b99e8524ec83a5c78bfbcbee5362b67d79ff279
     if not session.get('Name'):
         return redirect('/')
     else:
@@ -269,6 +274,7 @@ def enroll():
 def t_training():
     return render_template("Teacher-Training.html")
 
+<<<<<<< HEAD
 
 
 @application.route("/admin" )
@@ -297,6 +303,10 @@ def ad_login(error=0):
 #             return ad_login(error)
 #     # return render_template("Admin/admin_login.html",error=error)
 #
+=======
+    # return render_template("Admin/admin_login.html",error=error)
+
+>>>>>>> 4b99e8524ec83a5c78bfbcbee5362b67d79ff279
 
 
 @application.route("/competition",  methods=['GET', 'POST'])
@@ -342,21 +352,24 @@ def count():
 
     return render_template("Admin/admin.html",data=obj_list)
 
+<<<<<<< HEAD
 @application.route("/delete/<string:id>", methods=["GET"])
 def delete(id):
     print(id)
     if (Competition.query.filter(Competition.C_name==id).delete()):
         db.session.commit()
         return redirect('/competition')
+=======
+>>>>>>> 4b99e8524ec83a5c78bfbcbee5362b67d79ff279
 @application.route('/view_entries')
 def view_entries():
-    items = crud_operations.get_all_items()
+    items = CRUDOperations.get_all_items()
     return render_template('view_entries.html', items=items)
 
 
 @application.route('/delete_entry/<id>', methods=['POST'])
 def delete_entry(id):
-    crud_operations.delete_item(id)
+    CRUDOperations.delete_item(id)
     return redirect(url_for('view_entries'))
 
 
@@ -370,11 +383,11 @@ def update_entry(id):
             'title': title,
             'desc': desc
         }
-        crud_operations.update_item(item)
+        CRUDOperations.update_item(item)
         return redirect(url_for('view_entries'))
 
     # Retrieve the existing item
-    items = crud_operations.get_all_items()
+    items = CRUDOperations.get_all_items()
     item = next((item for item in items if item['id'] == id), None)
     if item is None:
         return "Item not found"
