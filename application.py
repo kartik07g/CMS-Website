@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template , redirect
+# from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from datetime import datetime
 import json
 from flask_mail import Mail
 from flask import flash
-from flask import Flask, render_template, request, url_for, session
+from flask import Flask, render_template, request, url_for,session
 from werkzeug.utils import redirect
 from crud import CRUDOperations
 from flask_session import Session
@@ -14,7 +14,7 @@ from flask_bcrypt import Bcrypt
 import support
 
 local_server = True
-application = Flask(__name__, template_folder="Templates")
+application= Flask(__name__, template_folder="Templates")
 application.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT='465',
@@ -25,87 +25,34 @@ application.config.update(
 )
 mail = Mail(application)
 
+
 application.config["SESSION_PERMANENT"] = False
 application.config["SESSION_TYPE"] = "filesystem"
-application.secret_key = "loginsession"
+application.secret_key="loginsession"
 Session(application)
-
-
-# if (local_server):
-#     application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Localhost/contact_info'
-# else:
-#     application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Localhost/contact_info'
-#
-# db = SQLAlchemy(application)
-
-#
-# class Contact(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     Name = db.Column(db.String(80), nullable=False)
-#     Subjectt = db.Column(db.String(100), nullable=False)
-#     Phn_no = db.Column(db.String(12), nullable=False)
-#     Date = db.Column(db.String(10), nullable=True)
-#     Mail = db.Column(db.String(50), nullable=False)
-#     Message = db.Column(db.String(300), nullable=False)
-#
-#
-# class Enroll(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     Name = db.Column(db.String(80), nullable=False)
-#     Phn_no = db.Column(db.String(12), nullable=False)
-#     Email = db.Column(db.String(50), nullable=False)
-#     Address = db.Column(db.String(200), nullable=False)
-#     Comment = db.Column(db.String(300), nullable=False)
-#     Course=db.Column(db.String(20), nullable=False)
-#     Category = db.Column(db.String(20), nullable=False)
-#
-# class Admin_login(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(100), nullable=False)
-#     password = db.Column(db.String(100), nullable=False)
-#
-# class Competition(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     C_name = db.Column(db.String(100), nullable=False)
-#     Url = db.Column(db.String(100), nullable=False)
-#     date = db.Column(db.String(100), nullable=False)
-#     description = db.Column(db.String(100), nullable=False)
-#
-# class Count_no(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     Students = db.Column(db.Integer, nullable=False)
-#     Courses = db.Column(db.Integer, nullable=False)
-#     Events = db.Column(db.Integer, nullable=False)
-#     Trainers = db.Column(db.Integer, nullable=False)
-#     Franchise = db.Column(db.Integer, nullable=False)
-
 
 @application.route('/admin')
 def admin():
     if not session.get('Name'):
         return redirect('/')
     else:
-        return render_template('/admin/show.html', name=session['Name'])
+        return render_template('/Admin/show.html',name=session['Name'])
 
 
 @application.route('/login')
 def form():
-    print("Arived123")
-    return render_template("/admin/disk.html")
-
+    return render_template('/Admin/disk.html')
 
 @application.route('/logout')
 def logout():
-    session.pop('Name', None)
+    session.pop('Name',None)
     return redirect('/')
-
 
 @application.route('/error')
 def display():
     return '<h1>incorrect credintials</h1>'
 
-
-@application.route('/data', methods=['POST', 'GET'])
+@application.route('/data', methods = ['POST', 'GET'])
 def login():
     # hashed_password = bcrypt.generate_password_hash('admin123')
 
@@ -115,9 +62,9 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        session['Name'] = username
+        session['Name']=username
 
-        if (support.func(username, password)):
+        if(support.func(username,password)):
             return redirect('/admin')
         else:
             return redirect("/error")
@@ -130,12 +77,20 @@ def index():
     # print(obj_list1)
     # obj_list.reverse()
     # return render_template("index.html",data=obj_list, count=obj_list1 )
-    return render_template("index.html", data=[''], count=[''])
+    return render_template("index.html",data=[''], count=[''] )
+
 
 
 @application.route("/about")
 def about():
     return render_template("about.html")
+
+@application.route("/competition_up")
+def competition_up():
+    obj_list = Competition.query.all()
+    obj_list.reverse()
+    return render_template("competition.html",data=obj_list)
+
 
 
 @application.route("/contact", methods=['GET', 'POST'])
@@ -147,10 +102,10 @@ def contact():
         phone = request.form.get('phone')
         message = request.form.get('message')
         print(email)
-        # entry = Contact(Name=name, Subjectt=subject, Phn_no=phone, Mail=email, Date=datetime.now(), Message=message)
+        #entry = Contact(Name=name, Subjectt=subject, Phn_no=phone, Mail=email, Date=datetime.now(), Message=message)
 
-        # db.session.add(entry)
-        # db.session.commit()
+        #db.session.add(entry)
+        #db.session.commit()
 
         mail.send_message('New message from' + name,
                           sender='user07g@gmail.com',
@@ -164,7 +119,6 @@ def contact():
 @application.route("/events")
 def events():
     return render_template("events.html")
-
 
 @application.route("/result")
 def results():
@@ -210,44 +164,92 @@ def kalfun():
 def dmit():
     return render_template("course-details/dmit.html")
 
-
 @application.route("/mont")
 def mont():
     return render_template("course-details/mont.html")
+
+
+@application.route("/Enroll Now" , methods=['GET', 'POST'])
+def enroll():
+    if (request.method == 'POST'):
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        address = request.form.get('address')
+        category = request.form.get('category')
+        course = request.form.get('course')
+        comment = request.form.get('comment')
+        entry = Enroll(Name=name, Email=email, Phn_no=phone, Address=address, Category=category, Course=course, Comment=comment)
+
+        db.session.add(entry)
+        db.session.commit()
+
+        mail.send_message('New message from' + name,
+                          sender='rakherajas21@gmail.com',
+                          recipients=['rakherajas21@gmail.com'],
+                          body= name + '\n' + email + '\n' + phone + '\n' + address + '\nCategory: ' + category + '\nCourse: ' + course + '\nComment: ' + comment
+                          )
+
+        mail.send_message('New message from MEGAMIND Institute',
+                          sender='rakherajas21@gmail.com',
+                          recipients=[email],
+                          body="ThanK you for contacting US."
+                          )
+
+    return render_template("Enroll Now.html")
 
 
 @application.route("/teacher training")
 def t_training():
     return render_template("Teacher-Training.html")
 
-
-@application.route("/admin")
-def ad_login(error=0):
-    if error:
-        error = "Invalid Password"
-        return render_template("Admin/admin_login.html", error=error)
-    else:
-        return render_template("Admin/admin_login.html")
+    # return render_template("Admin/admin_login.html",error=error)
 
 
-@application.route("/competition", methods=['GET', 'POST'])
+
+@application.route("/competition",  methods=['GET', 'POST'])
 def admin_login():
     if (request.method == 'POST'):
         C_name = request.form.get('C_name')
-        date = request.form.get('date')
-        Url = request.form.get('Url')
-        description = request.form.get('description')
-        print(C_name, date, description)
-        entry = Competition(C_name=C_name, date=date, Url=Url, description=description)
+        date=request.form.get('date')
+        Url=request.form.get('Url')
+        description= request.form.get('description')
+        print(C_name,date,description)
+        entry = Competition(C_name=C_name, date=date,Url=Url, description=description)
 
         db.session.add(entry)
         db.session.commit()
         print("Data added successfully")
     obj_list = Competition.query.all()
     obj_list.reverse()
-    return render_template("Admin/admin.html", data=obj_list) \
- \
- \
+    return render_template("Admin/admin.html",data=obj_list)\
+
+@application.route("/count",  methods=['GET', 'POST'])
+def count():
+    if (request.method == 'POST'):
+        obj_list = Count_no.query.all()
+        print(Count_no.Students)
+        x = obj_list[0].Students
+        str(x)
+        if(Count_no.query.filter(Count_no.Students == x).delete()):
+            print("done")
+
+        Students = request.form.get('Stud_num')
+        Courses=request.form.get('Courses_num')
+        Events=request.form.get('Events_num')
+        Trainers= request.form.get('Trainers_num')
+        Franchise= request.form.get('Franchise_num')
+
+        # Count_no.delete()
+        # entry = Count_no(C_name=C_name, date=date,Url=Url, description=description)
+
+    #     db.session.add(entry)
+    #     db.session.commit()
+    #     print("Data added successfully")
+    # obj_list = Count_no.query.all()
+
+    return render_template("Admin/admin.html",data=obj_list)
+
 @application.route('/view_entries')
 def view_entries():
     items = CRUDOperations.get_all_items()
@@ -286,6 +288,7 @@ def update_entry(id):
 def update_entry_redirect():
     id = request.form['id']
     return redirect(url_for('update_entry', id=id))
+
 
 
 if (__name__ == "__main__"):
