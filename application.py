@@ -82,14 +82,27 @@ Session(application)
 #     Franchise = db.Column(db.Integer, nullable=False)
 
 
-
-
-@application.route('/admin')
-def admin():
+@application.route('/section')
+def section():
     if not session.get('Name'):
         return redirect('/')
     else:
-        return render_template('/Admin/show.html',name=session['Name'])
+        data=['section 1','section 2','section 3','section 4','section 5','section 6']
+        data2=['subsection 1','subsection 2','subsection 3']
+        return render_template('/Admin/sectionlist.html',data=data,data2=data2)
+
+@application.route('/Form')
+def Form():
+    return render_template('/Admin/form.html')
+
+
+
+# @application.route('/admin')
+# def admin():
+#     if not session.get('Name'):
+#         return redirect('/')
+#     else:
+#         return render_template('/Admin/show.html',name=session['Name'])
 
 
 @application.route('/login')
@@ -118,7 +131,7 @@ def login():
         session['Name']=username
 
         if(support.func(username,password)):
-            return redirect('/admin')
+            return redirect("/section")
         else:
             return redirect("/error")
 
@@ -267,23 +280,23 @@ def ad_login(error=0):
     else:
         return render_template("Admin/admin_login.html")
 
-@application.route("/admin_login/<status>" , methods=['POST'])
-def login(status):
-    if (request.method == 'POST' and status=="False"):
-        username = request.form.get('username')
-        password= request.form.get('passwd')
-        print(username)
-        user= Admin_login.query.filter_by(username=username).first()
-        print(user.password)
-        if user.password==password:
-            status="True"
-            obj_list1 = Count_no.query.all()
-            return render_template("Admin/admin.html", count=obj_list1)
-        else:
-            error="Invalid Password"
-            return ad_login(error)
-    # return render_template("Admin/admin_login.html",error=error)
-
+# @application.route("/admin_login/<status>" , methods=['POST'])
+# def login(status):
+#     if (request.method == 'POST' and status=="False"):
+#         username = request.form.get('username')
+#         password= request.form.get('passwd')
+#         print(username)
+#         user= Admin_login.query.filter_by(username=username).first()
+#         print(user.password)
+#         if user.password==password:
+#             status="True"
+#             obj_list1 = Count_no.query.all()
+#             return render_template("Admin/admin.html", count=obj_list1)
+#         else:
+#             error="Invalid Password"
+#             return ad_login(error)
+#     # return render_template("Admin/admin_login.html",error=error)
+#
 
 
 @application.route("/competition",  methods=['GET', 'POST'])
@@ -335,19 +348,19 @@ def delete(id):
     if (Competition.query.filter(Competition.C_name==id).delete()):
         db.session.commit()
         return redirect('/competition')
-@app.route('/view_entries')
+@application.route('/view_entries')
 def view_entries():
     items = crud_operations.get_all_items()
     return render_template('view_entries.html', items=items)
 
 
-@app.route('/delete_entry/<id>', methods=['POST'])
+@application.route('/delete_entry/<id>', methods=['POST'])
 def delete_entry(id):
     crud_operations.delete_item(id)
     return redirect(url_for('view_entries'))
 
 
-@app.route('/update_entry/<id>', methods=['GET', 'POST'])
+@application.route('/update_entry/<id>', methods=['GET', 'POST'])
 def update_entry(id):
     if request.method == 'POST':
         title = request.form['title']
@@ -369,7 +382,7 @@ def update_entry(id):
     return render_template('update_entry.html', item=item)
 
 
-@app.route('/update_entry', methods=['POST'])
+@application.route('/update_entry', methods=['POST'])
 def update_entry_redirect():
     id = request.form['id']
     return redirect(url_for('update_entry', id=id))
