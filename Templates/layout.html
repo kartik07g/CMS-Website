@@ -82,6 +82,14 @@ if (setupTime == null) {
                 <li><a href="/teacher training">Teacher-Training</a></li>
                 <li><a href="/Enroll Now">Enroll Here</a></li>
                 <li><a href="/contact">Contact</a></li>
+                {% if not session.get('Name')%}
+                <li><a href="/login">Login</a></li>
+                {%else%}
+                <li><a href="/logout">Logout</a></li>
+                {%endif%}
+
+
+
 
             </ul>
         </nav><!-- .nav-menu -->
