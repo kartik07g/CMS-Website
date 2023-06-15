@@ -31,64 +31,15 @@ application.config["SESSION_TYPE"] = "filesystem"
 application.secret_key="loginsession"
 Session(application)
 
-<<<<<<< HEAD
-
-
-# if (local_server):
-#     application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Localhost/contact_info'
-# else:
-#     application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Localhost/contact_info'
-#
-# db = SQLAlchemy(application)
-
-#
-# class Contact(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     Name = db.Column(db.String(80), nullable=False)
-#     Subjectt = db.Column(db.String(100), nullable=False)
-#     Phn_no = db.Column(db.String(12), nullable=False)
-#     Date = db.Column(db.String(10), nullable=True)
-#     Mail = db.Column(db.String(50), nullable=False)
-#     Message = db.Column(db.String(300), nullable=False)
-#
-#
-# class Enroll(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     Name = db.Column(db.String(80), nullable=False)
-#     Phn_no = db.Column(db.String(12), nullable=False)
-#     Email = db.Column(db.String(50), nullable=False)
-#     Address = db.Column(db.String(200), nullable=False)
-#     Comment = db.Column(db.String(300), nullable=False)
-#     Course=db.Column(db.String(20), nullable=False)
-#     Category = db.Column(db.String(20), nullable=False)
-#
-# class Admin_login(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(100), nullable=False)
-#     password = db.Column(db.String(100), nullable=False)
-#
-# class Competition(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     C_name = db.Column(db.String(100), nullable=False)
-#     Url = db.Column(db.String(100), nullable=False)
-#     date = db.Column(db.String(100), nullable=False)
-#     description = db.Column(db.String(100), nullable=False)
-#
-# class Count_no(db.Model):
-#     Sr_No = db.Column(db.Integer, primary_key=True)
-#     Students = db.Column(db.Integer, nullable=False)
-#     Courses = db.Column(db.Integer, nullable=False)
-#     Events = db.Column(db.Integer, nullable=False)
-#     Trainers = db.Column(db.Integer, nullable=False)
-#     Franchise = db.Column(db.Integer, nullable=False)
-
 
 @application.route('/section')
 def section():
-=======
+    return render_template("sectionlist.html")
+
+
 @application.route('/admin')
 def admin():
->>>>>>> 4b99e8524ec83a5c78bfbcbee5362b67d79ff279
+
     if not session.get('Name'):
         return redirect('/')
     else:
@@ -99,16 +50,6 @@ def admin():
 @application.route('/Form')
 def Form():
     return render_template('/Admin/form.html')
-
-
-
-# @application.route('/admin')
-# def admin():
-#     if not session.get('Name'):
-#         return redirect('/')
-#     else:
-#         return render_template('/Admin/show.html',name=session['Name'])
-
 
 @application.route('/login')
 def form():
@@ -136,7 +77,7 @@ def login():
         session['Name']=username
 
         if(support.func(username,password)):
-            return redirect("/section")
+            return redirect("/admin")
         else:
             return redirect("/error")
 
@@ -274,7 +215,7 @@ def enroll():
 def t_training():
     return render_template("Teacher-Training.html")
 
-<<<<<<< HEAD
+
 
 
 @application.route("/admin" )
@@ -286,27 +227,6 @@ def ad_login(error=0):
     else:
         return render_template("Admin/admin_login.html")
 
-# @application.route("/admin_login/<status>" , methods=['POST'])
-# def login(status):
-#     if (request.method == 'POST' and status=="False"):
-#         username = request.form.get('username')
-#         password= request.form.get('passwd')
-#         print(username)
-#         user= Admin_login.query.filter_by(username=username).first()
-#         print(user.password)
-#         if user.password==password:
-#             status="True"
-#             obj_list1 = Count_no.query.all()
-#             return render_template("Admin/admin.html", count=obj_list1)
-#         else:
-#             error="Invalid Password"
-#             return ad_login(error)
-#     # return render_template("Admin/admin_login.html",error=error)
-#
-=======
-    # return render_template("Admin/admin_login.html",error=error)
-
->>>>>>> 4b99e8524ec83a5c78bfbcbee5362b67d79ff279
 
 
 @application.route("/competition",  methods=['GET', 'POST'])
@@ -326,41 +246,8 @@ def admin_login():
     obj_list.reverse()
     return render_template("Admin/admin.html",data=obj_list)\
 
-@application.route("/count",  methods=['GET', 'POST'])
-def count():
-    if (request.method == 'POST'):
-        obj_list = Count_no.query.all()
-        print(Count_no.Students)
-        x = obj_list[0].Students
-        str(x)
-        if(Count_no.query.filter(Count_no.Students == x).delete()):
-            print("done")
 
-        Students = request.form.get('Stud_num')
-        Courses=request.form.get('Courses_num')
-        Events=request.form.get('Events_num')
-        Trainers= request.form.get('Trainers_num')
-        Franchise= request.form.get('Franchise_num')
 
-        # Count_no.delete()
-        # entry = Count_no(C_name=C_name, date=date,Url=Url, description=description)
-
-    #     db.session.add(entry)
-    #     db.session.commit()
-    #     print("Data added successfully")
-    # obj_list = Count_no.query.all()
-
-    return render_template("Admin/admin.html",data=obj_list)
-
-<<<<<<< HEAD
-@application.route("/delete/<string:id>", methods=["GET"])
-def delete(id):
-    print(id)
-    if (Competition.query.filter(Competition.C_name==id).delete()):
-        db.session.commit()
-        return redirect('/competition')
-=======
->>>>>>> 4b99e8524ec83a5c78bfbcbee5362b67d79ff279
 @application.route('/view_entries')
 def view_entries():
     items = CRUDOperations.get_all_items()
