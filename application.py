@@ -41,7 +41,7 @@ def section():
 def admin():
 
     if not session.get('Name'):
-        return redirect('/')
+        return redirect('/login')
     else:
         data=['section 1','section 2','section 3','section 4','section 5','section 6']
         data2=['subsection 1','subsection 2','subsection 3']
@@ -49,7 +49,10 @@ def admin():
 
 @application.route('/Form')
 def Form():
-    return render_template('/Admin/form.html')
+    if not session.get('Name'):
+        return redirect('/login')
+    else:
+        return render_template('/Admin/form.html')
 
 @application.route('/login')
 def form():
