@@ -77,29 +77,11 @@
                 </div>
                 <div class="col-lg-4">
 
+                    {% for item in items %}
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Discover your child’s inborn talent.</h5>
-
+                        <h5>{{ item['title'] }}  :  {{ item['desc'] }}</h5>
                     </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Discover the level of his 8 multiple intelligence.</h5>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Assess your EQ , lQ , AQ , CQ & VQ</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Certification</h5>
-                        <p>After successful completion</p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Plan ahead to achieve your goals and live your dreams.</h5>
-                    </div>
-
+                {% endfor %}
                     <div class="align-self-center mx-auto">
                         <a href="/contact" class="btn btn-warning " tabindex="-1" role="button"
                            aria-disabled="true" style="margin-left: 35px">Enroll Now</a>

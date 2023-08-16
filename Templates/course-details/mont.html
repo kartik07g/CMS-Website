@@ -36,41 +36,11 @@
                     </p>
                 </div>
                 <div class="col-lg-4">
-                    <h3>Benefits of MTT Course</h3>
-
+                    {% for item in items %}
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Flexible curriculum.</h5>
+                        <h5>{{ item['title'] }}  :  {{ item['desc'] }}</h5>
                     </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Help to arrange an cohesive and scientific environment which aids in self-learning.</h5>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Allows to teach at own pace, scientific method of teaching, reality orientated and specific materials – (sense of order).</h5>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Preferences on activities according to inner need of the children.</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Development of child-centered learning environment, self-education through self-correction methods.</h5>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Recognition of sensitive periods in each child.</h5>
-                    </div>
-
-                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Focus on developing the play materials for non-specific skills and multi-sensory materials to develop a specific skill.</h5>
-                    </div>
-
-                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Dig up the benefits of yoga, mindfulness and nourishment in to the children.</h5>
-                    </div>
-
+                {% endfor %}
                     <div class="align-self-center mx-auto">
                         <a href="/contact" class="btn btn-warning " tabindex="-1" role="button"
                            aria-disabled="true" style="margin-left: 35px">Enroll Now</a>

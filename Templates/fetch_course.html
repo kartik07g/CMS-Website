@@ -151,6 +151,10 @@
       transform: translateY(-50%);
       transition: all 0.3s ease;
     }
+    .field-inputs {
+      display: flex;
+      gap: 10px;
+    }
 
     form .content {
       display: flex;
@@ -201,49 +205,34 @@
   </style>
   <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-      <div class="container d-flex align-items-center">
-        <h1 class="logo mr-auto"><a href="/about">Megamind</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-        <a href="/courses" class="get-started-btn">Get Started</a>
-      </div>
-    </header>
-    <!-- End Header -->
     <div class="wrapper">
-      <div class="title">Add Section</div>
-      <form method="POST" action="/newitems">
-        <select name="sections" id="sections" class="field">
-    <option value="">Select section</option>
-    {% for section in sections %}
-        <option value="{{ section }}">{{ section }}</option>
-    {% endfor %}
-</select>
+      <div class="title">Add Courses</div>
+      <form method="POST" action="/fill_course" enctype="multipart/form-data">
+        <div class="field">
+          <input type="text" name="title" placeholder="course Name" required />
+        </div>
         <div class="field">
           <input
             type="text"
-            name="section_name"
-            placeholder="Section Name"
+            name="overview"
+            placeholder="course Overview"
             required
           />
         </div>
-        <div class="field" id="xy">
+        <div class="field">
           <input
             type="text"
-            name="section_desc"
-            placeholder="Section description"
+            name="desc"
+            placeholder="course Description"
             required
           />
+        </div>
+        <div class="field">
+          <input type="file" name="image" accept="image/*" />
         </div>
 
-        <br />
-        <div>
-          <label for="img">Select image</label><br />
-          <input type="file" class="a" id="img" name="img" accept="image/*" />
-        </div>
-        <br />
         <div class="field">
-          <input type="submit" value="submit" />
+          <input type="submit" value="Submit" />
         </div>
       </form>
     </div>

@@ -13,3 +13,16 @@ def func(username,password):
     else:
         return False
 
+
+
+# {% for item in items %}
+#                     <div class="course-info d-flex justify-content-between align-items-center">
+#                         <h5>Title</h5>
+#                         <p>{{ item['title'] }}</p>
+#                     </div>
+#                     <div class="course-info d-flex justify-content-between align-items-center">
+#                         <h5>Description</h5>
+#                         <p>{{ item['desc'] }}</p>
+#                     </div>
+#                 {% endfor %}
+

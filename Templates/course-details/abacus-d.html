@@ -70,30 +70,12 @@
                     </p>
                 </div>
                 <div class="col-lg-4">
+                    {% for item in items %}
+                    <div class="course-info d-flex justify-content-between align-items-center">
+                        <h5>{{ item['title'] }}  :  {{ item['desc'] }}</h5>
+                    </div>
+                {% endfor %}
 
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Levels Covered</h5>
-                        <p><a href="#">8</a></p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Duration </h5>
-                        <p>6 hours per level</p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Examination</h5>
-                        <p>Both Online or offline</p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Certification</h5>
-                        <p>After successful completion </p>
-                    </div>
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5> Student-kits</h5>
-                        <p>Door-step delivery</p>
-                    </div>
                     <div class="align-self-center mx-auto">
                         <a href="/contact" class="btn btn-warning " tabindex="-1" role="button"
                                        aria-disabled="true" style="margin-left: 35px">Enroll Now</a>
