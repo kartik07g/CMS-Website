@@ -74,37 +74,11 @@
                     </p>
                 </div>
                 <div class="col-lg-4">
-                    <h5>Course Icludes Cube Types :</h5>
+                     {% for item in items %}
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5> Rubiks cube 3 x 3</h5>
-
+                        <h5>{{ item['title'] }}  :  {{ item['desc'] }}</h5>
                     </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5> Rubiks cube 2 x 2</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5> Rubiks cube 4 x 4 (rubiks revenge)</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Rubiks cube 5 x 5</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Mirror cube 3 x 3</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Pyramid cube</h5>
-
-                    </div>
-
+                {% endfor %}
                     <div class="align-self-center mx-auto">
                         <a href="/contact" class="btn btn-warning " tabindex="-1" role="button"
                            aria-disabled="true" style="margin-left: 35px">Enroll Now</a>

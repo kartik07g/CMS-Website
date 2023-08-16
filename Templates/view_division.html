@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Entries</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .navbar {
+            background-color: lightblue;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Course Information</h1>
+    </div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Faculty Name</th>
+            <th>Faculty Post</th>
+            <th>Location</th>
+            <th>Contact Number</th>
+            <th>Actions</th> <!-- New column for actions -->
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.post }}</td>
+            <td>{{ item.city }}</td>
+            <td>{{ item.contactnumber }}</td>
+            <td>
+{#                <a href="{{ url_for('update_entry', id=item.id) }}">Update</a> <!-- Update button -->#}
+                <form action="{{ url_for('delete_div', id=item.id) }}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

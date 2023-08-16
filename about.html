@@ -1,20 +1,8 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<style>
-    .abc{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    }
-    .cde{
-    margin-left:10%;
-    }
 
-
-</style>
 <main id="main">
-
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
@@ -112,43 +100,41 @@
     </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
-{% for item in count_items %}
-    <section class="counts section-bg">
+    <section id="counts" class="counts section-bg">
         <div class="container">
+
             <div class="row counters">
 
                 <div class="col-lg-2 col-6 text-center" style="margin-left:100px;">
-                    <span data-toggle="counter-up">{{ item.students }}</span>
+                    <span data-toggle="counter-up">1232</span>
                     <p>Students</p>
                 </div>
 
                 <div class="col-lg-2 col-6 text-center">
-                    <span data-toggle="counter-up">{{ item.courses }}</span>
+                    <span data-toggle="counter-up">64</span>
                     <p>Courses</p>
                 </div>
 
                 <div class="col-lg-2 col-6 text-center">
-                    <span data-toggle="counter-up">{{ item.events }}</span>
+                    <span data-toggle="counter-up">42</span>
                     <p>Events</p>
                 </div>
 
                 <div class="col-lg-2 col-6 text-center">
-                    <span data-toggle="counter-up">{{ item.trainers }}</span>
+                    <span data-toggle="counter-up">15</span>
                     <p>Trainers</p>
                 </div>
 
                 <div class="col-lg-2 col-6 text-center">
-                    <span data-toggle="counter-up">{{ item.franchise }}</span>
+                    <span data-toggle="counter-up">15</span>
                     <p>Franchise</p>
                 </div>
 
             </div>
-        </div>
-    </section>
-    {% endfor %}
-    <!-- End Counts Section -->
-<!-- ======= Why Us Section ======= -->
 
+        </div>
+    </section><!-- End Counts Section -->
+<!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
         <div class="container" data-aos="fade-up">
 
@@ -201,26 +187,6 @@ franchisor helps you to enter the business world with confidence.</p>
 
         </div>
     </section><!-- End Why Us Section -->
-    <div  class="testimonials ">
-
-     <div class="section-title cde">
-         <h2>Course related videos </h2>
-         <p>Course Videos</p>
-     </div>
-s
-   <div class="abc">
-       <p><iframe width="560" height="315" src="https://www.youtube.com/embed/iWx_o5Iatpw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
-       <p><iframe width="560" height="315" src="https://www.youtube.com/embed/iWx_o5Iatpw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
-   </div>
-
-   <div class="abc">
-       <p><iframe width="560" height="315" src="https://www.youtube.com/embed/v9MYE13PJmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
-       <p><iframe width="560" height="315" src="https://www.youtube.com/embed/k8YiqM0Y-78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
-   </div>
-
-  </div>
-
-       </div>
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
         <div class="container" data-aos="fade-up">
@@ -235,143 +201,99 @@ s
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Nashik</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Nashik')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Nashik' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i> <br>
+                            <strong>Mrs. Shilpa Wabale (+919765648680)</strong> : Division Head <br>
+                            <strong>Mrs. Asmita Kulkarni (+918149236299)</strong> : Sub-Division Head</h6>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i> <br>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Mumbai</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Mumbai')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Mumbai' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i> <br>
+                            <strong>Jyoti Dhakani (+917020793705)</strong> : Division Head <br>
+                            <strong>Mrs. Nutan Patel (+919766954042)</strong> : Sub-Division Head</h6><br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Nagpur</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Nagpur')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Nagpur' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
+                            <strong>Mrs. Sangita Potdukhe (+917720060264)</strong> : Division Head <br>
+                            <strong>Mrs. Vidhya Deokar (+919623551020)</strong> : Sub-Division Head</h6><br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Yavatmal</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Yavatmal')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Yavatmal' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i> <br>
+                            <strong>Mrs. Priti Tembhare (+917350025726)</strong> : Division Head <br>
+                            <strong>Mrs. Pranali Deshmukh (+919767991308)</strong> : Sub-Division Head</h6><br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Pune</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Pune')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Pune' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
+                            <strong>Mrs. Radhika Gaopande (+919860255907)</strong> : Division Head <br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Buldhana</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Buldhana')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Buldhana' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
+                            <strong>Mrs. Shital More (+919422182183)</strong> : Division Head <br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Washim</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Washim')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Washim' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
+                            <strong>Mrs. Manisha Magar (+919552400760)</strong> : Division Head <br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
                 <div class="testimonial-wrap">
                     <div class="testimonial-item">
                         <h3>Akola</h3>
-                        {% if div_items|selectattr('city', 'equalto', 'Akola')|list %}
-    <p>
-        <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
-        {% for item in div_items %}
-            {% if item.city == 'Akola' %}
-                <strong>{{ item['name'] }} ({{ item['contactnumber'] }})</strong> : {{ item['post'] }} <br>
-            {% endif %}
-        {% endfor %}
-        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-    </p>
-{% endif %}
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i><br>
+                            <strong>Mrs. Tejal Sawant (+917709074357)</strong> : Division Head <br>
+                            <strong>Mrs. Payal Katariya (+919021223389)</strong> : Sub-Division Head</h6><br>
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
                     </div>
                 </div>
 
             </div>
 
         </div>
-
     </section><!-- End Testimonials Section -->
 
 </main><!-- End #main -->

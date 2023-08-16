@@ -2,41 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
-     <link rel="stylesheet" href='style.css'>
+    <title>Admin Login</title>
     <style>
-        .center{
-display:flex;
-justify-content:center;
-}
-.a{
-margin:15px;
-}
-.b{
-display:flex;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: auto;
+            font-size: 17px;
+        }
+
+        body {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            place-items: center;
+            background: #f2f2f2;
+        }
+
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        form p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            height: 40px;
+            width: 300px;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f4214f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #d01743;
+        }
     </style>
 </head>
 <body>
-<h1 class="center">Admin login page</h1>
-<div class="center">
-    <form action="/data"  method="POST">
-    <p>Username</p>
-  <input type="text" name="username" placeholder="Username">
+    <h1 class="center">Admin Login Page</h1>
+    <div class="center">
+        <form action="/data" method="POST">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Username">
 
-   <p>Password</p>
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Password">
 
-  <input type="password" name="password" placeholder="Password">
-
-  <br>
-        <div class="center a">
-             <input type="submit">
-
-        </div>
-
-
-</form>
-
-</div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<main id="main" data-aos="fade-in">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Competitions</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+                {% for item in items %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-item card-height d-flex flex-column justify-content-between">
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>{{ item.title }}</h4>
+                            </div>
+                            <h3><a href="/course-details">{{ item.desc }}</a></h3>
+                            <p>{{ item.date }} {{ item.time }}</p>
+                        </div>
+                        <div class="trainer">
+                            <a href="/Enroll_Now" class="btn btn-warning" tabindex="-1" role="button"
+                               aria-disabled="true">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Courses Section -->
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+{% endblock %}

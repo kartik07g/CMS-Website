@@ -35,26 +35,11 @@
                 </div>
                 <div class="col-lg-4">
 
+                    {% for item in items %}
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Develop spelling skills</h5>
+                        <h5>{{ item['title'] }}  :  {{ item['desc'] }}</h5>
                     </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Initiate progressive learning</h5>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Improve their independent writing ability</h5>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Decode words they encounter while reading</h5>
-
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Initiate progressive learning</h5>
-                    </div>
+                {% endfor %}
 
                     <div class="align-self-center mx-auto">
                         <a href="/contact" class="btn btn-warning " tabindex="-1" role="button"

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Count Items</title>
+</head>
+<body>
+    <h1>Fetch Count Items</h1>
+
+    <form method="GET" action="/view_count">
+        <label for="courses">Courses:</label>
+        <input type="text" name="courses" id="courses"><br>
+
+        <label for="events">Events:</label>
+        <input type="text" name="events" id="events"><br>
+
+        <label for="franchise">Franchise:</label>
+        <input type="text" name="franchise" id="franchise"><br>
+
+        <label for="students">Students:</label>
+        <input type="text" name="students" id="students"><br>
+
+        <label for="trainers">Trainers:</label>
+        <input type="text" name="trainers" id="trainers"><br>
+
+        <input type="submit" value="Fetch Count Items">
+    </form>
+
+    <h2>Count Items:</h2>
+    <ul>
+        {% for item in count_items %}
+        <li>
+            Courses: {{ item.courses }} |
+            Events: {{ item.events }} |
+            Franchise: {{ item.franchise }} |
+            Students: {{ item.students }} |
+            Trainers: {{ item.trainers }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

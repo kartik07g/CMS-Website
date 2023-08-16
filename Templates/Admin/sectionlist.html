@@ -1,43 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <title>MEGAMIND</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="{{url_for('static',filename='img/mind_icon.png')}}" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{url_for('static',filename='img/mind_icon.png')}}" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link href="{{url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css' )}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='vendor/icofont/icofont.min.css' )}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='vendor/boxicons/css/boxicons.min.css' )}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='vendor/remixicon/remixicon.css' )}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='vendor/owl.carousel/assets/owl.carousel.min.css' )}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='vendor/animate.css/animate.min.css' )}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='vendor/aos/aos.css' )}}" rel="stylesheet">
-
-
-
+    <link href="{{url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static',filename='vendor/icofont/icofont.min.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static',filename='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static',filename='vendor/remixicon/remixicon.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static',filename='vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static',filename='vendor/animate.css/animate.min.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static',filename='vendor/aos/aos.css')}}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{url_for('static',filename='css/style.css' )}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet" />
 
     <!-- =======================================================
     * Template Name: Mentor - v2.2.1
@@ -46,68 +38,111 @@
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
 
-       <script>
-
-var hours = 1; // to clear the localStorage after 1 hour(if someone want to clear after 8hrs simply change hours=8)
-var now = new Date().getTime();
-var setupTime = localStorage.getItem('setupTime');
-if (setupTime == null) {
-    localStorage.setItem('setupTime', now)
-} else {
-    if(now-setupTime > hours*60*60*1000) {
-        localStorage.clear()
-        localStorage.setItem('setupTime', now);
-    }
-}
+    <script>
+        var hours = 1; // to clear the localStorage after 1 hour(if someone wants to clear after 8hrs simply change hours=8)
+        var now = new Date().getTime();
+        var setupTime = localStorage.getItem("setupTime");
+        if (setupTime == null) {
+            localStorage.setItem("setupTime", now);
+        } else {
+            if (now - setupTime > hours * 60 * 60 * 1000) {
+                localStorage.clear();
+                localStorage.setItem("setupTime", now);
+            }
+        }
     </script>
-
-
 </head>
 <style>
-    .list-group{
-    margin-top:50px;
-    margin-left:50px;
-    margin-right:50px;
+    .list-group {
+        margin-top: 50px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
-    h3{
-    text-align:center;
-    margin-top:100px;
+    h3 {
+        text-align: center;
+        margin-top: 100px;
     }
-    .btn-sm btn-danger{
-    margin-right:60px;
+    .btn-sm.btn-danger {
+        margin-right: 60px;
     }
-
 </style>
 <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo mr-auto"><a href="/about">Megamind</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <a href="/courses" class="get-started-btn">Get Started</a>
+        </div>
+    </header>
+    <!-- End Header -->
 
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-
-        <h1 class="logo mr-auto"><a href="/about">Megamind</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-        <a href="/courses" class="get-started-btn">Get Started</a>
-        <a href="/logout" class="get-started-btn">LogOut</a>
-    </div>
-</header><!-- End Header -->
-
-<h3>section list</h3>
-<ul class="list-group">
-    <div class="dropdown">
-        {%   for item in data  %}
-       <li class="list-group-item" data-toggle="collapse" href="#collapseExample{{loop.index}}" role="button" aria-expanded="false" aria-controls="collapseExample" >{{item}} <a href="/Form" class="btn-sm btn-danger float-right " tabindex="-1" role="button"
-                                      aria-disabled="true">Add section</a></li>
-        <div class="collapse" id="collapseExample{{loop.index}}">
-         <div class="card card-body">
-             {%   for subitem in data2   %}
-    <li class="list-group-item">{{subitem}}</li>
-             {%  endfor  %}
-          </div>
-     </div>
-     {%  endfor  %}
-    </div>
-
-</ul>
+    <h3>section list</h3>
+    <ul class="list-group">
+        <div class="dropdown">
+            <li class="list-group-item">
+                Fill Division
+                <a href="/fill_div" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the fill division section -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <li class="list-group-item">
+                View Division
+                <a href="/view_div" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the view division section -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <li class="list-group-item">
+                Add Events
+                <a href="/fill_events" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the add events section -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <li class="list-group-item">
+                View Events
+                <a href="/view_events" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the view events section -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <li class="list-group-item">
+                Fill Course
+                <a href="/fill_course" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the fill division section -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <li class="list-group-item">
+                View Course
+                <a href="/view_course" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the fill division section -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <li class="list-group-item">
+                Fill Count
+                <a href="/fill_count" class="btn-sm btn-danger float-right" tabindex="-1" role="button" aria-disabled="true">click</a>
+            </li>
+            <div class="card card-body">
+                <!-- Content of the fill division section -->
+            </div>
+        </div>
+    </ul>
 </body>
 </html>
